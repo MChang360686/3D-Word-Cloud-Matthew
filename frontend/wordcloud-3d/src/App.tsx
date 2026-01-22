@@ -36,8 +36,8 @@ export default function App() {
     'https://nypost.com/2026/01/21/world-news/south-koreas-former-prime-minister-jailed-for-23-years/',
     'https://www.fool.com/investing/2026/01/21/3-red-hot-growth-stocks-to-buy-in-2026/',
     'https://www.nytimes.com/wirecutter/reviews/best-usb-c-battery-packs-and-power-banks/'
-  ];
-  const listLinks = links.map(link => <li>{link}</li>);
+  ]
+  const listLinks = links.map(link => <li>{link}</li>)
 
   return (
     <div className="container">
