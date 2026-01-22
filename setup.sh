@@ -33,7 +33,7 @@ cd ..
 # -----------------------------
 echo "📦 Setting up frontend..."
 
-cd frontend
+cd frontend/wordcloud-3d
 npm install
 
 echo "▶️ Starting frontend dev server..."
