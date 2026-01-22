@@ -20,7 +20,13 @@ Ensure React Three Fiber and React Three Drei are installed with ```npm install 
 
 Run project with ```npm run dev``` in 3D-Word-Cloud-Matthew/frontend/wordcloud-3d.  
 
-## Testing
+# Setup
+
+Run ```./setup.ps1``` in PowerShell for Windows.
+
+Run ```./setup.sh``` in Terminal for MacOS
+
+# Testing
 ### Backend
 Check http://127.0.0.1:8000/analyze with the following JSON as the body.  If the backend is running you should see TF-IDF analysis of the article provided.
 ```
