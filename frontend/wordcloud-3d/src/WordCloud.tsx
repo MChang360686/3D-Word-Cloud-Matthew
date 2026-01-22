@@ -14,10 +14,10 @@ export default function WordCloud({
   colorMode,
 }: any) {
   return (
-    <Canvas camera={{ position: [0, 0, 10] }}>
+    <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
-      <OrbitControls />
+      <OrbitControls enableZoom={true} enablePan={true} />
 
       {words.map((word: any, i: number) => (
         <Text

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import WordCloud from "./WordCloud.tsx"
+import SelectInput from "./SelectInput.tsx"
 import "./App.css"
 
 export default function App() {
@@ -32,26 +33,12 @@ export default function App() {
     )
   }
 
-  const links = [
-    'https://nypost.com/2026/01/21/world-news/south-koreas-former-prime-minister-jailed-for-23-years/',
-    'https://www.fool.com/investing/2026/01/21/3-red-hot-growth-stocks-to-buy-in-2026/',
-    'https://www.nytimes.com/wirecutter/reviews/best-usb-c-battery-packs-and-power-banks/'
-  ]
-  const listLinks = links.map(link => <li>{link}</li>)
-
   return (
     <div className="container">
       <h1>
         3D Word Cloud Generator
       </h1>
-      <ul>
-        {listLinks}
-      </ul>
-      <input
-        placeholder="Paste article URL"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-      />
+      <SelectInput value={url} onChange={setUrl}/>
 
       <div className="controls">
         <label>
@@ -97,7 +84,9 @@ export default function App() {
         colorMode={colorMode}
       />
 
-      <button onClick={fetchWords}>Generate Word Cloud</button>
+      <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+        <button onClick={fetchWords}>Generate Word Cloud</button>
+      </div>
     </div>
   )
 }
