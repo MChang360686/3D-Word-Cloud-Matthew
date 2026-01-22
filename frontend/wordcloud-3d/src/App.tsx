@@ -1,6 +1,6 @@
 import { useState } from "react"
 import WordCloud from "./WordCloud.tsx"
-import SelectInput from "./SelectInput.tsx"
+import ComboBox from "./ComboBox.tsx"
 import "./App.css"
 
 export default function App() {
@@ -10,13 +10,22 @@ export default function App() {
   const [colorMode, setColorMode] = useState(true)
 
   const fetchWords = async () => {
+  try {
     const res = await fetch("http://127.0.0.1:8000/analyze", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url }),
-    })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Request failed: ${res.status}`);
+    }
 
     const data = await res.json()
+
+    if (!data.top_words) {
+      throw new Error("Response missing top_words")
+    }
 
     const entries = Object.entries(data.top_words)
 
@@ -31,6 +40,21 @@ export default function App() {
         ],
       }))
     )
+  } catch (err) {
+    console.error("Failed to fetch words:", err);
+  }
+}
+
+
+  const links = [
+    'https://nypost.com/2026/01/21/world-news/south-koreas-former-prime-minister-jailed-for-23-years/',
+    'https://www.fool.com/investing/2026/01/21/3-red-hot-growth-stocks-to-buy-in-2026/',
+    'https://www.nytimes.com/wirecutter/reviews/best-usb-c-battery-packs-and-power-banks/'
+  ]
+
+  const handleChange = (value: string) => {
+    console.log("Value " + value)
+    setUrl(value)
   }
 
   return (
@@ -38,7 +62,7 @@ export default function App() {
       <h1>
         3D Word Cloud Generator
       </h1>
-      <SelectInput value={url} onChange={setUrl}/>
+      <ComboBox options={links} onChange={handleChange}/>
 
       <div className="controls">
         <label>
