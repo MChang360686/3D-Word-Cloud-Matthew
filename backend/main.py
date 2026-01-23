@@ -5,6 +5,10 @@ from newspaper import Article
 from sklearn.feature_extraction.text import TfidfVectorizer
 import logging
 
+'''
+TODO: add more NLP methods and endpoints
+'''
+
 # add logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
